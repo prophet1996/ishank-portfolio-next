@@ -1,8 +1,8 @@
-import React from 'react';
-import Link from 'next/link'
-import styled from 'styled-components';
+import React from "react";
+import Link from "next/link";
+import styled from "styled-components";
 
-const StyledSpan = styled(Link)`
+const StyledSpan = styled.div`
   color: ${(props) => props.theme.body};
   background-color: ${(props) => props.theme.background};
   font-weight: bold;
@@ -18,5 +18,9 @@ const StyledSpan = styled(Link)`
   z-index: 99999;
   border-radius: 4px;
 `;
-const BackButton = ({ prevLink }:{prevLink:string}) => <StyledSpan href={`/${prevLink}`}>{'<'}</StyledSpan>;
+const BackButton = ({ prevLink }: { prevLink: string }) => (
+  <Link href={`/${prevLink}`}>
+    <StyledSpan>{"<"}</StyledSpan>
+  </Link>
+);
 export default BackButton;

@@ -1,8 +1,8 @@
-import React from 'react';
-import { useTransition, animated } from 'react-spring';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { COMMAND_LIST } from '../../constants';
+import React from "react";
+import { useTransition, animated } from "react-spring";
+import styled from "styled-components";
+import Link from "next/link";
+import { COMMAND_LIST } from "../../constants";
 
 const StyledCommand = styled(animated.div)`
   cursor: pointer;
@@ -33,15 +33,15 @@ const CommandList = () => {
   const transitions = useTransition(COMMAND_LIST, (item) => item.name, {
     unique: true,
     trail: 400 / COMMAND_LIST.length,
-    from: { opacity: 0, transform: 'scale(0)' },
-    enter: { opacity: 1, transform: 'scale(1)' },
-    leave: { opacity: 0, transform: 'scale(0)' },
+    from: { opacity: 0, transform: "scale(0)" },
+    enter: { opacity: 1, transform: "scale(1)" },
+    leave: { opacity: 0, transform: "scale(0)" },
   });
 
   return (
     <StyledCommandList>
       {transitions.map(({ item, key, props }) => (
-        <Link to={item.route} style={{ textDecoration: 'none' }}>
+        <Link href={item.route} style={{ textDecoration: "none" }}>
           <StyledCommand key={key} style={props} title={item.description}>
             {item.name}
           </StyledCommand>

@@ -1,11 +1,9 @@
-import React, {
-   useState, useEffect, useCallback,
-} from 'react';
-import styled from 'styled-components';
-import { useRouter } from 'next/router'
-import Typist from 'react-typist';
-import Suggestions from '../components/Suggestions/Suggestions';
-import CommandLineInput from '../components/CommandLineInput';
+import React, { useState, useEffect, useCallback } from "react";
+import styled from "styled-components";
+import { useRouter } from "next/router";
+import Typist from "react-typist";
+import Suggestions from "../components/Suggestions/Suggestions";
+import CommandLineInput from "../components/CommandLineInput";
 
 const CommandLineHistoryStyles = styled.span`
   display: flex;
@@ -38,33 +36,38 @@ const StyledTypist = styled(Typist)`
 `;
 
 const Home = ({ mainRef }: any) => {
-  const router = useRouter()
+  const router = useRouter();
   const [commandLineHistory, setcommandLineHistory] = useState<any>([]);
   const [showTutorial, setShowTutorial] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
   const [helpShown, setHelpShown] = useState(false);
-  const shiftTerminalInput = (newInput) => setcommandLineHistory([...commandLineHistory, newInput]);
+  const shiftTerminalInput = (newInput) =>
+    setcommandLineHistory([...commandLineHistory, newInput]);
   const clearCommandLineHistory = () => setcommandLineHistory([]);
   const handleShowTutorial = useCallback(() => {
     setShowTutorial(!showTutorial);
   }, []);
   useEffect(() => {
-    if (!showTutorial) { (mainRef?.current as any).focus(); }
+    if (!showTutorial) {
+      (mainRef?.current as any).focus();
+    }
   }, [mainRef, showTutorial]);
 
-  const handleTypingDone = useCallback(
-    () => setHelpShown(true), [],
+  const handleTypingDone = useCallback(() => setHelpShown(true), []);
+  const commandLineHistoryElements = commandLineHistory.map(
+    ({
+      // eslint-disable-next-line no-unused-vars
+      prefix,
+      command,
+      render,
+    }) => (
+      <CommandLineHistoryStyles key={prefix + command}>
+        {prefix}
+        <span>{command}</span>
+        {render}
+      </CommandLineHistoryStyles>
+    )
   );
-  const commandLineHistoryElements = commandLineHistory.map(({
-    // eslint-disable-next-line no-unused-vars
-    prefix, command, render,
-  }) => (
-    <CommandLineHistoryStyles key={prefix + command}>
-      {prefix}
-      <span>{command}</span>
-      {render}
-    </CommandLineHistoryStyles>
-  ));
 
   if (showTutorial) router.push("tutorial");
 
@@ -73,10 +76,7 @@ const Home = ({ mainRef }: any) => {
       <Suggestions handleShowTutorial={handleShowTutorial} />
       {commandLineHistoryElements}
       {showHelp && (
-        <StyledTypist
-          hideWhenDone
-          onTypingDone={handleTypingDone}
-        >
+        <StyledTypist hideWhenDone onTypingDone={handleTypingDone}>
           Hi, I&apos;m IshankS.
           <p> I like to design and build software</p>
         </StyledTypist>
