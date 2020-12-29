@@ -1,30 +1,36 @@
 import fs from "fs";
 import path from "path";
-import { useRef, useEffect } from "react";
-
+import { useEffect } from "react";
+import BackButton from "../../components/shared/BackButton";
 const TemplateComponent = (props) => {
-  const ref = useRef();
   const { html } = props;
+  if (!html)
+    return (
+      <>
+        <BackButton prevLink="" />
+      </>
+    );
   const cleanup = `
-  console.log("")
-    setTimeout(()=>{
+  
+    
       
     var linkElem =document.getElementsByTagName('a');
     for(var i=0;i<linkElem.length;i++){
-      debugger;
       linkElem[i].href=      linkElem[i].href.replace(/htmlman[1-9]/gi,"man")
       linkElem[i].href=      linkElem[i].href.replace(/.html$/gi,"")
     }
     
-
-  },1000);
-  `;
+    
+    ;
+    `;
   useEffect(() => {
     window.eval(cleanup);
+    debugger;
   }, []);
   return (
     <>
-      <div dangerouslySetInnerHTML={{ __html: html + cleanup }} ref={ref} />
+      <BackButton prevLink="" />
+      <div dangerouslySetInnerHTML={{ __html: html + cleanup }} />
     </>
   );
 };
@@ -33,7 +39,7 @@ export async function getServerSideProps(context) {
     params: { cmd },
   } = context;
   let section = 1;
-  let html;
+  let html = "";
   cmd = cmd.split(".")[0];
   while (section < 8) {
     const filePath = path.join(process.cwd(), `static/${cmd}.${section}.html`);

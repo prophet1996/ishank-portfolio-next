@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import React from 'react';
-import styled from 'styled-components';
-import useFS from '../hooks/useFS';
-import Plugins from '../plugins';
+import { useRouter } from "next/router";
+import styled from "styled-components";
+import useFS from "../hooks/useFS";
+import Plugins from "../plugins";
 
 const CommandLineStyles = styled.span`
   display: block;
@@ -15,7 +15,7 @@ const CommandLineStyles = styled.span`
   }
 `;
 
-export default (props:any) => {
+export default (props: any) => {
   const {
     inputRef,
     shiftTerminalInput,
@@ -24,38 +24,46 @@ export default (props:any) => {
     setHelpShown,
   } = props;
   const fsStore = useFS();
+  const router = useRouter();
   const { currentDir } = fsStore;
-  const prefix = `ishank.web.dev:~$/${currentDir === '/' ? '' : currentDir}`;
+  const prefix = `ishank.web.dev:~$/${currentDir === "/" ? "" : currentDir}`;
   const handleKeyDown = (e) => {
-    if (inputRef.current.value === '') return;
-    if (e.key === 'Enter') {
+    if (inputRef.current.value === "") return;
+    if (e.key === "Enter") {
       // tmeporary
       let caughtcommand = false;
+      const commandString = inputRef.current.value.toLowerCase();
       shiftTerminalInput({ prefix, command: inputRef.current.value });
-      if (inputRef.current.value.toLowerCase() === '\\h') {
+      if (commandString === "\\h") {
         setHelpShown(false);
         setShowHelp(true);
         caughtcommand = true;
       }
-      if (inputRef.current.value.toLowerCase() === 'clear') {
+      if (commandString === "clear") {
         clearCommandLineHistory();
         caughtcommand = true;
       }
-      if (inputRef.current.value.toLowerCase().match(/echo */)) {
+      if (commandString.match(/echo */)) {
         shiftTerminalInput({
-          prefix: '',
+          prefix: "",
           command: inputRef.current.value.slice(
             5,
-            inputRef.current.value.length,
+            inputRef.current.value.length
           ),
         });
         caughtcommand = true;
       }
+      if (commandString.match(/man */)) {
+        const commandArr = commandString.split(" ");
+        debugger;
+        router.push(`man/${commandArr[commandArr.length - 1]}`);
+        caughtcommand = true;
+      }
       if (!caughtcommand) {
-        const [invokedCommand, ...args] = inputRef.current.value.split(' ');
+        const [invokedCommand, ...args] = inputRef.current.value.split(" ");
         if (Plugins[invokedCommand.toUpperCase()]) {
           shiftTerminalInput({
-            prefix: '',
+            prefix: "",
             render: Plugins[invokedCommand.toUpperCase()](fsStore, args),
             command: invokedCommand,
           });
@@ -65,7 +73,7 @@ export default (props:any) => {
           });
         }
       }
-      inputRef.current.value = '';
+      inputRef.current.value = "";
     }
   };
 
