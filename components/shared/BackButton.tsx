@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const StyledSpan = styled.div`
   color: ${(props) => props.theme.body};
@@ -18,9 +19,17 @@ const StyledSpan = styled.div`
   z-index: 99999;
   border-radius: 4px;
 `;
-const BackButton = ({ prevLink }: { prevLink: string }) => (
-  <Link href={`/${prevLink}`}>
-    <StyledSpan>{"<"}</StyledSpan>
-  </Link>
-);
+const BackButton = ({ prevLink }: { prevLink?: string }) => {
+  const router = useRouter();
+  if (prevLink) {
+    return (
+      <Link href={`/${prevLink}`}>
+        <StyledSpan>{"<"}</StyledSpan>
+      </Link>
+    );
+  } else {
+    return <StyledSpan onClick={() => router.back()}>{"<"}</StyledSpan>;
+  }
+};
+
 export default BackButton;

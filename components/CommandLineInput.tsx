@@ -54,9 +54,14 @@ export default (props: any) => {
         caughtcommand = true;
       }
       if (commandString.match(/man */)) {
-        const commandArr = commandString.split(" ");
-        debugger;
-        router.push(`man/${commandArr[commandArr.length - 1]}`);
+        const [invokedCommand, ...args] = inputRef.current.value.split(" ");
+        if (args[0] === "help") {
+          shiftTerminalInput({
+            prefix: "",
+            command: "man help",
+          });
+        }
+        router.push(`man/${args[0]}`);
         caughtcommand = true;
       }
       if (!caughtcommand) {

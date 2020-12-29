@@ -29,7 +29,7 @@ const TemplateComponent = (props) => {
   }, []);
   return (
     <>
-      <BackButton prevLink="" />
+      <BackButton />
       <div dangerouslySetInnerHTML={{ __html: html + cleanup }} />
     </>
   );
