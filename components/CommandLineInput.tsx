@@ -5,13 +5,15 @@ import useFS from "../hooks/useFS";
 import Plugins from "../plugins";
 
 const CommandLineStyles = styled.span`
-  display: block;
+  display: flex;
+  align-items: baseline;
   color: ${(props) => props.theme.body};
   font-weight: 700;
   margin: 1.2em 1.2em;
   & > input[type="text"] {
     background: ${(props) => props.theme.background};
     color: ${(props) => props.theme.body};
+    font-size: unset;
   }
 `;
 
@@ -85,7 +87,13 @@ export default (props: any) => {
   return (
     <CommandLineStyles>
       {prefix}
-      <input autoFocus type="text" onKeyDown={handleKeyDown} ref={inputRef} />
+      <input
+        autoFocus
+        type="text"
+        spellCheck="false"
+        onKeyDown={handleKeyDown}
+        ref={inputRef}
+      />
     </CommandLineStyles>
   );
 };
