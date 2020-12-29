@@ -41,7 +41,7 @@ const CommandList = () => {
   return (
     <StyledCommandList>
       {transitions.map(({ item, key, props }) => (
-        <Link href={item.route} style={{ textDecoration: "none" }}>
+        <Link href={item.route} key={key} style={{ textDecoration: "none" }}>
           <StyledCommand key={key} style={props} title={item.description}>
             {item.name}
           </StyledCommand>

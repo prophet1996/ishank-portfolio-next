@@ -1,7 +1,7 @@
-import React from 'react';
-import { useTransition, animated } from 'react-spring';
-import styled from 'styled-components';
-import { WELCOME_MESSAGE } from '../../constants';
+import React from "react";
+import { useTransition, animated } from "react-spring";
+import styled from "styled-components";
+import { WELCOME_MESSAGE } from "../../constants";
 
 const StyledWelcomeMessage = styled.div`
   margin: 2rem;
@@ -11,11 +11,11 @@ const StyledWelcomeMessage = styled.div`
 `;
 
 const WelcomeMessageTextItem = styled(animated.span)`
-  text-align: center;
+  margin: auto;
 `;
 
 const AnimatedMessage = () => {
-  const transitions = useTransition(WELCOME_MESSAGE, (item) => item, {
+  const transitions = useTransition(WELCOME_MESSAGE, (item) => item.key, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 1 },

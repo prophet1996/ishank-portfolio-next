@@ -1,6 +1,7 @@
 import "../styles/index.css";
 import { ThemeProvider } from "../hooks/useTheme";
-import React, { useRef, useCallback } from "react";
+import { useRef, useCallback } from "react";
+import Head from "next/head";
 import styled from "styled-components";
 
 import "../styles/App.css";
@@ -29,6 +30,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider>
+      <Head>
+        <title>My page title</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <AppWrapper onClick={focusOnInputHandler} className="App">
         <main>
           <div>

@@ -17,7 +17,7 @@ const CommandLineStyles = styled.span`
   }
 `;
 
-export default (props: any) => {
+const CommandLineInput = (props: any) => {
   const {
     inputRef,
     shiftTerminalInput,
@@ -97,3 +97,5 @@ export default (props: any) => {
     </CommandLineStyles>
   );
 };
+
+export default CommandLineInput;
