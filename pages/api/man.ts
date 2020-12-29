@@ -1,9 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
-import { match } from "assert";
-import console from "console";
-import parser from "htmlparser2";
-
 export default async (req, res) => {
   const { query: { cmd = "" } = {} } = req;
   let data;
