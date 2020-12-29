@@ -77,3 +77,13 @@ section {
 .open {
   display: block;
 }
+
+a,
+input,
+body,
+html,
+button,
+div,
+span {
+  transition: color, background 0.2s ease-in-out;
+}

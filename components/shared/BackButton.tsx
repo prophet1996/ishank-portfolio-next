@@ -21,7 +21,7 @@ const StyledSpan = styled.div`
 `;
 const BackButton = ({ prevLink }: { prevLink?: string }) => {
   const router = useRouter();
-  if (prevLink) {
+  if (typeof prevLink === "string") {
     return (
       <Link href={`/${prevLink}`}>
         <StyledSpan>{"<"}</StyledSpan>

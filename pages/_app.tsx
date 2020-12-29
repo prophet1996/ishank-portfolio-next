@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <Head>
-        <title>My page title</title>
+        <title>IshankS__</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <AppWrapper onClick={focusOnInputHandler} className="App">
