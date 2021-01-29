@@ -4304,6 +4304,13 @@ react-typist@^2.0.5:
   dependencies:
     prop-types "^15.5.10"
 
+react-vim-wasm@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/react-vim-wasm/-/react-vim-wasm-0.1.4.tgz#bd2e4c29aff1c82c4bd659d1f1104daaad0213b1"
+  integrity sha512-Ly0AZHLrKqLsKNczP7gR5cDtQvC5v5bPs0/i9Wrbf/OCl1oWRxY9wW2V+ejRfMZ8huLlZoHNt9iAx6UDblwlUQ==
+  dependencies:
+    vim-wasm "~0.0.13"
+
 react@17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
@@ -5275,6 +5282,11 @@ util@^0.11.0:
   integrity sha512-HShAsny+zS2TZfaXxD9tYj4HQGlBezXZMZuM/S5PKLLoZkShZiGk9o5CzukI1LVHZvjdvZ2Sj1aW/Ndn2NB/HQ==
   dependencies:
     inherits "2.0.3"
+
+vim-wasm@~0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/vim-wasm/-/vim-wasm-0.0.13.tgz#450a83d1eea7def4d6cf8c863c502b5b771b08ea"
+  integrity sha512-2EkJ4OfMgvA/bURJeu43wqIQ4tpCJymst++Y4R/AKuQlnrvdI4hTpG2jf0yL5TrLt1ui12leLRghrwPOybyu8w==
 
 vm-browserify@1.1.2, vm-browserify@^1.0.1:
   version "1.1.2"
