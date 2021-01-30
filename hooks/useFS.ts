@@ -115,10 +115,8 @@ export default create(
     name: "fs", // unique name,
     storage: (() => {
       if (typeof window !== "undefined") {
-        console.log("we are running on the client");
         return window.localStorage;
       } else {
-        console.log("we are running on the server");
         return null;
       }
     })(),
