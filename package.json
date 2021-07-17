@@ -17,7 +17,6 @@
     "react-typist": "^2.0.5",
     "react-vim-wasm": "^0.1.4",
     "styled-components": "^5.2.1",
-    "vim-wasm": "^0.0.13",
     "zustand": "^3.2.0"
   },
   "devDependencies": {
