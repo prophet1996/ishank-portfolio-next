@@ -72,5 +72,5 @@ type ResumeHeadingProps = {
   size: number;
   bold: boolean;
   underline: boolean;
-  mb: number;
+  mb?: number;
 };
