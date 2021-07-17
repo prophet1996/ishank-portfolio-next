@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "ln -s ./node_modules/vim-wasm /vercel/path0/static/vim-wasm && next build",
+    "build": "next build",
     "start": "next start"
   },
   "dependencies": {
