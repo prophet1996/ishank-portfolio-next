@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useCallback } from "react";
-import { Vim } from "react-vim-wasm";
+// import { Vim } from "react-vim-wasm";
 
 const VimEditor = ({ onMouseMove }) => {
   const onVimExit = () => {};
@@ -12,14 +12,14 @@ const VimEditor = ({ onMouseMove }) => {
 
   return (
     <div onMouseMove={onMouseMove}>
-      <Vim
+      {/* <Vim
         worker="static/vim.js"
         onVimExit={onVimExit}
         style={{ height: "100vh", width: "100vw" }}
         onFileExport={onFileExport}
         onWriteClipboard={navigator.clipboard && navigator.clipboard.writeText}
         onError={onError}
-      />
+      /> */}
     </div>
   );
 };
