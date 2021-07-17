@@ -10,7 +10,7 @@ const CommandLineHistoryStyles = styled.span`
   flex-direction: row;
   color: ${(props) => props.theme.body};
   font-weight: 700;
-  margin: 1.2em 1.2em;
+  margin: 1.2em;
   & > span {
     background: ${(props) => props.theme.background};
     color: ${(props) => props.theme.body};

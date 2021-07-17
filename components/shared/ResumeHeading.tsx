@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const getMediaQuery = (
   screenSize: { tablet: string; mobileM: string },
   size: number,
-  delta: number,
+  delta: number
 ) => `
 
 @media ${screenSize.tablet} {
@@ -30,17 +30,21 @@ const getUnderLineContent = (highLight: string) => `
 
 const ResumeHeadingWrapper = styled.div`
   position: relative;
-  margin-bottom: 1em;
+  margin-bottom: ${({ mb = 1 }) => mb}em;
+  height: fit-content;
 `;
 
 const Heading: any = styled.h2`
   margin: auto;
   font-size: ${(props: ResumeHeadingProps) => props.size}em;
-  font-weight: ${(props: ResumeHeadingProps) => (props.bold ? 'bolder' : 'normal')};
-  ${(props) => (props.underline ? getUnderLineContent(props.theme.highLight) : '')}
-  ${(props) => (props.size > 3
-    ? getMediaQuery(props.theme.deviceMax, props.size, 0)
-    : getMediaQuery(props.theme.deviceMax, props.size, 2))}
+  font-weight: ${(props: ResumeHeadingProps) =>
+    props.bold ? "bolder" : "normal"};
+  ${(props) =>
+    props.underline ? getUnderLineContent(props.theme.highLight) : ""}
+  ${(props) =>
+    props.size > 3
+      ? getMediaQuery(props.theme.deviceMax, props.size, 0)
+      : getMediaQuery(props.theme.deviceMax, props.size, 2)}
 `;
 
 const Span: any = styled.span`
@@ -50,9 +54,13 @@ const Span: any = styled.span`
 `;
 
 export default ({
-  heading, size, bold, underline,
+  heading,
+  size,
+  bold,
+  underline,
+  ...rest
 }: ResumeHeadingProps) => (
-  <ResumeHeadingWrapper>
+  <ResumeHeadingWrapper {...rest}>
     <Heading size={size} bold={bold} underline={underline}>
       <Span>{heading}</Span>
     </Heading>
@@ -64,4 +72,5 @@ type ResumeHeadingProps = {
   size: number;
   bold: boolean;
   underline: boolean;
+  mb: number;
 };
