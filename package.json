@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "ln -s ./node_modules/vim-wasm ./static && next build",
     "start": "next start"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "react-typist": "^2.0.5",
     "react-vim-wasm": "^0.1.4",
     "styled-components": "^5.2.1",
+    "vim-wasm": "^0.0.13",
     "zustand": "^3.2.0"
   },
   "devDependencies": {
