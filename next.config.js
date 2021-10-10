@@ -4,3 +4,6 @@
 // ]); // pass the modules you would like to see transpiled
 
 // module.exports = withTM();
+module.exports = {
+    webpack5: true,
+}

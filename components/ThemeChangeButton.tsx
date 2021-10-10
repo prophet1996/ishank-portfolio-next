@@ -36,7 +36,6 @@ export default ({ className } :any) => {
       {transitions.map(({ item, key, props }:any) => (
         <ButtonIconWrapper
           className={className}
-          themestate={themeState}
           onClick={themeState.toggle}
           style={props}
           key={key}

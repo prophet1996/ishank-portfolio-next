@@ -8,9 +8,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "framer-motion": "^4.1.17",
     "nanoid": "^3.1.16",
-    "next": "10.0.1",
-    "next-transpile-modules": "^6.1.0",
+    "next": "^11.1.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-spring": "^8.0.27",
@@ -21,6 +21,10 @@
   "devDependencies": {
     "@types/node": "^16.3.3",
     "@types/react": "^16.9.56",
-    "typescript": "^4.0.5"
+    "typescript": "^4.5.0-dev.20210926"
+  },
+  "volta": {
+    "node": "14.17.6",
+    "yarn": "1.22.11"
   }
 }

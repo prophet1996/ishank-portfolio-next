@@ -44,8 +44,16 @@ function MyApp({ Component, pageProps }) {
           </div>
           <Component mainRef={mainRef} {...pageProps} />
         </main>
+        <style global={true}>
+      {`
+      * {
+        box-sizing: border-box;
+      }
+      `}
+    </style>
       </AppWrapper>
     </ThemeProvider>
+    
   );
 }
 
